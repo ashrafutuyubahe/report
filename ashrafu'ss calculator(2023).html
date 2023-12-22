@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pop-up Calculator</title>
+    <style>
+      .calculator {
+        width: 200px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background-color: #f9f9f9;
+      }
+
+      .calculator input[type="button"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <input type="button" value="Open Calculator" onclick="openCalculator()" />
+
+    <div id="calculator" class="calculator" style="display: none">
+      <input type="text" id="result" readonly />
+      <input type="button" value="1" onclick="appendNumber(1)" />
+      <input type="button" value="2" onclick="appendNumber(2)" />
+      <input type="button" value="3" onclick="appendNumber(3)" />
+      <input type="button" value="4" onclick="appendNumber(4)" />
+      <input type="button" value="5" onclick="appendNumber(5)" />
+      <input type="button" value="6" onclick="appendNumber(6)" />
+      <input type="button" value="7" onclick="appendNumber(7)" />
+      <input type="button" value="8" onclick="appendNumber(8)" />
+      <input type="button" value="9" onclick="appendNumber(9)" />
+      <input type="button" value="0" onclick="appendNumber(0)" />
+      <br />
+      <input type="button" value="+" onclick="appendOperator('+')" />
+      <input type="button" value="-" onclick="appendOperator('-')" />
+      <input type="button" value="*" onclick="appendOperator('*')" />
+      <input type="button" value="/" onclick="appendOperator('/')" />
+      <input type="button" value="=" onclick="calculate()" />
+      <input type="button" value="Clear" onclick="clearCalculator()" />
+    </div>
+
+    <script>
+      var calculator = document.getElementById("calculator");
+      var result = document.getElementById("result");
+
+      function openCalculator() {
+        calculator.style.display = "block";
+      }
+
+      function appendNumber(number) {
+        result.value += number;
+      }
+
+      function appendOperator(operator) {
+        result.value += operator;
+      }
+
+      function calculate() {
+        try {
+          result.value = eval(result.value);
+        } catch (error) {
+          result.value = "Error";
+        }
+      }
+
+      function clearCalculator() {
+        result.value = "";
+      }
+    </script>
+    
+  </body>
+</html>
